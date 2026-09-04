@@ -1,0 +1,50 @@
+[
+  {
+    "id": "q1",
+    "question": "What was Apple's total net sales for fiscal year 2024?",
+    "expected_answer_contains": ["391,035", "$391"],
+    "expected_source_page": 41
+  },
+  {
+    "id": "q2",
+    "question": "Who is Apple's CEO?",
+    "expected_answer_contains": ["Timothy", "Cook", "Tim Cook"],
+    "expected_source_page": 64
+  },
+  {
+    "id": "q3",
+    "question": "What are some risks related to Apple's suppliers?",
+    "expected_answer_contains": ["supplier", "manufactur"],
+    "expected_source_page": 10
+  },
+   {
+    "id": "q4",
+    "question": "What fiscal year end date does Apple use?",
+    "expected_answer_contains": ["last Saturday of September", "September"],
+    "expected_source_page": 26
+  },
+  {
+    "id": "q5",
+    "question": "Does Apple's 10-K mention cybersecurity risks?",
+    "expected_answer_contains": ["cybersecurity", "security"],
+    "expected_source_page": 17
+  },
+  {
+    "id": "q6",
+    "question": "What is Apple's stock ticker symbol?",
+    "expected_answer_contains": ["AAPL"],
+    "expected_source_page": 1
+  },
+   {
+    "id": "q7",
+    "question": "What is the name of Apple's outside auditor?",
+    "expected_answer_contains": ["Ernst", "Young"],
+    "expected_source_page": 56
+  },
+  {
+    "id": "q8",
+    "question": "What is Apple's approach to product transitions and competition?",
+    "expected_answer_contains": ["competit", "product"],
+    "expected_source_page": 11
+  }
+]
