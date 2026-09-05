@@ -2,7 +2,7 @@ __pycache__/
 *.pyc
 venv/
 .env
-vectorstore/*.faiss
-vectorstore/*.pkl
+#vectorstore/*.faiss
+#vectorstore/*.pkl
 data/raw_pdfs/*.pdf
 .DS_Store
