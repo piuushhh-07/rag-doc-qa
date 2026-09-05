@@ -62,3 +62,8 @@ Run via `python eval/retrieval_eval.py` against an 8-question hand-labeled test 
 - Generation uses `temperature=0.1` deliberately — factual document Q&A should be consistent and grounded, not creative.
 - The LLM is explicitly instructed to decline to answer rather than guess, which is the primary anti-hallucination lever in this system.
 - Evaluation combines a cheap deterministic check (keyword match) with a more expensive LLM-as-judge faithfulness score, since keyword matching alone can't catch semantically wrong-but-keyword-matching answers.
+## Live Demo
+- **UI**: https://rag-doc-q.streamlit.app
+- **API docs**: https://rag-doc-qa-h9vr.onrender.com/docs
+
+> **Note:** the backend runs on Render's free tier, which spins down after ~15 minutes of inactivity. If the UI shows "API not reachable," the backend is likely asleep — visiting the API docs link above (or just retrying a question) will wake it within 30-60 seconds. This is a free-hosting-tier limitation, not an application bug.
