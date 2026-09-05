@@ -60,3 +60,52 @@ def ask_question(request: AskRequest):
 
     result = pipeline.ask(request.question, top_k=request.top_k)
     return result
+
+from fastapi.responses import StreamingResponse
+from rag.generator import generate_answer_stream
+import json
+
+
+@app.post("/ask/stream")
+def ask_question_stream(request: AskRequest):
+    """
+    Streaming version of /ask. Retrieval happens synchronously first
+    (fast, and we need citations before we can tell the client anything
+    useful), then the answer text is streamed token-by-token.
+
+    Protocol: plain text chunks for the answer, followed by a special
+    delimiter line, followed by a JSON blob containing citations.
+    This is a simplified custom protocol (not full Server-Sent Events)
+    -- good enough for our own Streamlit client, though a "real" public
+    API would typically use proper SSE with `data: ` prefixes.
+    """
+    if not request.question.strip():
+        raise HTTPException(status_code=400, detail="Question cannot be empty.")
+
+    top_k = request.top_k or pipeline.top_k
+    retrieved_chunks = pipeline.retriever.retrieve(request.question, top_k=top_k)
+
+    if not retrieved_chunks:
+        def empty_gen():
+            yield "I don't have enough information in the provided documents to answer this."
+        return StreamingResponse(empty_gen(), media_type="text/plain")
+
+    def event_generator():
+        # Stream the answer text first
+        for token in generate_answer_stream(request.question, retrieved_chunks):
+            yield token
+
+        # Then send citations as a delimited final block
+        citations = [
+            {
+                "number": i + 1,
+                "source_file": c["source_file"],
+                "page_number": c["page_number"],
+                "score": round(c["score"], 4)
+            }
+            for i, c in enumerate(retrieved_chunks)
+        ]
+        yield "\n[[CITATIONS]]\n"
+        yield json.dumps(citations)
+
+    return StreamingResponse(event_generator(), media_type="text/plain")

@@ -77,6 +77,31 @@ def generate_answer(query, retrieved_chunks):
     }
 
 
+def generate_answer_stream(query, retrieved_chunks):
+    """
+    Same prompt/grounding logic as generate_answer(), but yields
+    text chunks as they're generated instead of waiting for the
+    full response. Used by the streaming API endpoint for a
+    typing-effect UI.
+
+    Sources are NOT yielded here -- we already know them before
+    generation starts (they came from retrieval), so the caller
+    (api/main.py) handles sending them separately, after the text stream ends.
+    """
+    prompt = build_prompt(query, retrieved_chunks)
+
+    stream = client.chat.completions.create(
+        model=GENERATION_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.1,
+        stream=True  # this is the only functional difference from generate_answer()
+    )
+
+    for chunk in stream:
+        delta = chunk.choices[0].delta.content
+        if delta:  # some chunks (e.g. the final one) have no content, just metadata
+            yield delta
+
 if __name__ == "__main__":
     import pathlib
     import sys
