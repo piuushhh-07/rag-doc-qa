@@ -1,21 +1,38 @@
 import pdfplumber
 import os
+import re
+
+
+def clean_text(text):
+    """
+    Strips Chrome's print-to-PDF artifacts:
+    - Header timestamp line, e.g. "03/09/2026, 20:15 aapl-20240928"
+    - Footer URL + page counter, e.g. "https://www.sec.gov/.../aapl-20240928.htm 3/64"
+
+    These are print artifacts, not document content, and add noise
+    to every single chunk if left in — worth stripping at the source
+    rather than downstream in the chunker.
+    """
+    # Remove header: date/time + filename pattern at start of a line
+    text = re.sub(r"^\d{2}/\d{2}/\d{4}, \d{2}:\d{2} \S+\s*", "", text)
+
+    # Remove footer: full URL followed by "N/M" page counter
+    text = re.sub(r"https?://\S+\s+\d+/\d+\s*$", "", text)
+
+    return text.strip()
 
 
 def load_pdf(filepath):
     """
     Extracts text from a PDF, page by page.
     Returns a list of dicts: [{"page_number": 1, "text": "..."}, ...]
-
-    We keep page numbers attached to each chunk of text because
-    later, when we cite sources, we need to tell the user
-    "this answer came from page 12" — not just "somewhere in the doc".
     """
     pages = []
     with pdfplumber.open(filepath) as pdf:
         for i, page in enumerate(pdf.pages):
             text = page.extract_text()
-            if text:  # some pages (cover pages, images) may return None
+            if text:
+                text = clean_text(text)
                 pages.append({
                     "page_number": i + 1,
                     "text": text,
@@ -25,10 +42,6 @@ def load_pdf(filepath):
 
 
 def load_all_pdfs(directory):
-    """
-    Loads every PDF in a directory and returns one combined list
-    of page dicts, tagged with which file each page came from.
-    """
     all_pages = []
     for filename in os.listdir(directory):
         if filename.endswith(".pdf"):
@@ -40,8 +53,11 @@ def load_all_pdfs(directory):
 
 
 if __name__ == "__main__":
-    # Quick manual test — run this file directly to sanity-check extraction
-    pages = load_all_pdfs("data/raw_pdfs")
+    import pathlib
+    project_root = pathlib.Path(__file__).resolve().parent.parent
+    pdf_dir = project_root / "data" / "raw_pdfs"
+
+    pages = load_all_pdfs(str(pdf_dir))
     print(f"Loaded {len(pages)} total pages.")
     if pages:
         print("--- Sample from first page ---")
