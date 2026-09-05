@@ -1,0 +1,338 @@
+{
+  "summary": {
+    "total_questions": 8,
+    "retrieval_precision_at_k": 0.875,
+    "keyword_match_rate": 0.875,
+    "avg_faithfulness_score": 4.5
+  },
+  "results": [
+    {
+      "id": "q1",
+      "question": "What was Apple's total net sales for fiscal year 2024?",
+      "answer": "Apple's total net sales for fiscal year 2024 were $391,035 million [2].",
+      "citations": [
+        {
+          "number": 1,
+          "source_file": "apple.pdf",
+          "page_number": 26,
+          "score": 0.0318
+        },
+        {
+          "number": 2,
+          "source_file": "apple.pdf",
+          "page_number": 41,
+          "score": 0.0311
+        },
+        {
+          "number": 3,
+          "source_file": "apple.pdf",
+          "page_number": 54,
+          "score": 0.0306
+        },
+        {
+          "number": 4,
+          "source_file": "apple.pdf",
+          "page_number": 26,
+          "score": 0.0302
+        },
+        {
+          "number": 5,
+          "source_file": "apple.pdf",
+          "page_number": 27,
+          "score": 0.0301
+        }
+      ],
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "faithfulness_score": 5,
+      "faithfulness_reasoning": "The answer accurately reflects the expected total net sales of $391,035 million for fiscal year 2024."
+    },
+    {
+      "id": "q2",
+      "question": "Who is Apple's CEO?",
+      "answer": "I don't have enough information in the provided documents to answer this.",
+      "citations": [
+        {
+          "number": 1,
+          "source_file": "apple.pdf",
+          "page_number": 4,
+          "score": 0.0313
+        },
+        {
+          "number": 2,
+          "source_file": "apple.pdf",
+          "page_number": 62,
+          "score": 0.0303
+        },
+        {
+          "number": 3,
+          "source_file": "apple.pdf",
+          "page_number": 64,
+          "score": 0.0294
+        },
+        {
+          "number": 4,
+          "source_file": "apple.pdf",
+          "page_number": 5,
+          "score": 0.0294
+        },
+        {
+          "number": 5,
+          "source_file": "apple.pdf",
+          "page_number": 62,
+          "score": 0.0286
+        }
+      ],
+      "retrieval_hit": true,
+      "keyword_hit": false,
+      "faithfulness_score": 1,
+      "faithfulness_reasoning": "The answer is incorrect as it fails to mention Tim Cook, who is the current CEO of Apple."
+    },
+    {
+      "id": "q3",
+      "question": "What are some risks related to Apple's suppliers?",
+      "answer": "Some risks related to Apple's suppliers include industrial accidents that could result in serious injuries or loss of life, disruption to the Company's business, and harm to its reputation [1]. Additionally, many of the Company's suppliers are located in areas prone to natural disasters, which can lead to significant disruptions in manufacturing and delivery [2]. The reliance on single or limited sources for critical components exposes the Company to supply shortages and pricing risks, particularly if suppliers experience financial difficulties or if there are industry-wide shortages [4][5]. Furthermore, the Company's suppliers may also be vulnerable to cybersecurity attacks, which can disrupt business operations [3].",
+      "citations": [
+        {
+          "number": 1,
+          "source_file": "apple.pdf",
+          "page_number": 10,
+          "score": 0.0323
+        },
+        {
+          "number": 2,
+          "source_file": "apple.pdf",
+          "page_number": 10,
+          "score": 0.0306
+        },
+        {
+          "number": 3,
+          "source_file": "apple.pdf",
+          "page_number": 15,
+          "score": 0.0297
+        },
+        {
+          "number": 4,
+          "source_file": "apple.pdf",
+          "page_number": 12,
+          "score": 0.0297
+        },
+        {
+          "number": 5,
+          "source_file": "apple.pdf",
+          "page_number": 12,
+          "score": 0.0296
+        }
+      ],
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "faithfulness_score": 5,
+      "faithfulness_reasoning": "The answer accurately reflects the risks related to Apple's suppliers, including industrial accidents, natural disasters, reliance on limited sources, and cybersecurity vulnerabilities."
+    },
+    {
+      "id": "q4",
+      "question": "What fiscal year end date does Apple use?",
+      "answer": "Apple's fiscal year ends on the last Saturday of September [1].",
+      "citations": [
+        {
+          "number": 1,
+          "source_file": "apple.pdf",
+          "page_number": 26,
+          "score": 0.0325
+        },
+        {
+          "number": 2,
+          "source_file": "apple.pdf",
+          "page_number": 40,
+          "score": 0.0323
+        },
+        {
+          "number": 3,
+          "source_file": "apple.pdf",
+          "page_number": 26,
+          "score": 0.0318
+        },
+        {
+          "number": 4,
+          "source_file": "apple.pdf",
+          "page_number": 4,
+          "score": 0.0306
+        },
+        {
+          "number": 5,
+          "source_file": "apple.pdf",
+          "page_number": 62,
+          "score": 0.0303
+        }
+      ],
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "faithfulness_score": 5,
+      "faithfulness_reasoning": "The answer accurately reflects that Apple's fiscal year ends on the last Saturday of September."
+    },
+    {
+      "id": "q5",
+      "question": "Does Apple's 10-K mention cybersecurity risks?",
+      "answer": "Yes, Apple's 10-K mentions cybersecurity risks. The document discusses the Company's enterprise risk management program, which is designed to identify, assess, and monitor business risks, including cybersecurity risks, and details the responsibilities of the Head of Corporate Information Security and the Audit Committee in overseeing these matters [1][5].",
+      "citations": [
+        {
+          "number": 1,
+          "source_file": "apple.pdf",
+          "page_number": 22,
+          "score": 0.0328
+        },
+        {
+          "number": 2,
+          "source_file": "apple.pdf",
+          "page_number": 3,
+          "score": 0.0318
+        },
+        {
+          "number": 3,
+          "source_file": "apple.pdf",
+          "page_number": 9,
+          "score": 0.031
+        },
+        {
+          "number": 4,
+          "source_file": "apple.pdf",
+          "page_number": 4,
+          "score": 0.0308
+        },
+        {
+          "number": 5,
+          "source_file": "apple.pdf",
+          "page_number": 22,
+          "score": 0.0306
+        }
+      ],
+      "retrieval_hit": false,
+      "keyword_hit": true,
+      "faithfulness_score": 5,
+      "faithfulness_reasoning": "The answer accurately reflects that Apple's 10-K mentions cybersecurity risks and provides relevant details about the company's risk management program."
+    },
+    {
+      "id": "q6",
+      "question": "What is Apple's stock ticker symbol?",
+      "answer": "Apple's stock ticker symbol is AAPL [3].",
+      "citations": [
+        {
+          "number": 1,
+          "source_file": "apple.pdf",
+          "page_number": 1,
+          "score": 0.0325
+        },
+        {
+          "number": 2,
+          "source_file": "apple.pdf",
+          "page_number": 25,
+          "score": 0.0323
+        },
+        {
+          "number": 3,
+          "source_file": "apple.pdf",
+          "page_number": 24,
+          "score": 0.032
+        },
+        {
+          "number": 4,
+          "source_file": "apple.pdf",
+          "page_number": 51,
+          "score": 0.0308
+        },
+        {
+          "number": 5,
+          "source_file": "apple.pdf",
+          "page_number": 62,
+          "score": 0.0306
+        }
+      ],
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "faithfulness_score": 5,
+      "faithfulness_reasoning": "The answer correctly identifies Apple's stock ticker symbol as AAPL, matching the expected fact."
+    },
+    {
+      "id": "q7",
+      "question": "What is the name of Apple's outside auditor?",
+      "answer": "The name of Apple's outside auditor is Ernst & Young LLP [1].",
+      "citations": [
+        {
+          "number": 1,
+          "source_file": "apple.pdf",
+          "page_number": 56,
+          "score": 0.032
+        },
+        {
+          "number": 2,
+          "source_file": "apple.pdf",
+          "page_number": 64,
+          "score": 0.0315
+        },
+        {
+          "number": 3,
+          "source_file": "apple.pdf",
+          "page_number": 1,
+          "score": 0.0307
+        },
+        {
+          "number": 4,
+          "source_file": "apple.pdf",
+          "page_number": 57,
+          "score": 0.0297
+        },
+        {
+          "number": 5,
+          "source_file": "apple.pdf",
+          "page_number": 55,
+          "score": 0.0291
+        }
+      ],
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "faithfulness_score": 5,
+      "faithfulness_reasoning": "The answer correctly identifies Apple's outside auditor as Ernst & Young LLP, matching the expected key facts."
+    },
+    {
+      "id": "q8",
+      "question": "What is Apple's approach to product transitions and competition?",
+      "answer": "Apple's approach to product transitions involves successfully managing frequent introductions and transitions of products and services to remain competitive and stimulate customer demand. The company must continually introduce new products, services, and technologies, enhance existing offerings, and effectively manage the risks associated with these transitions. Competition is intense, with competitors imitating Apple's product features and collaborating to offer more competitive solutions. Apple faces substantial competition from companies with significant resources, broader product lines, and aggressive pricing strategies, which puts pressure on its market share and profit margins [1][2][4].",
+      "citations": [
+        {
+          "number": 1,
+          "source_file": "apple.pdf",
+          "page_number": 11,
+          "score": 0.0325
+        },
+        {
+          "number": 2,
+          "source_file": "apple.pdf",
+          "page_number": 11,
+          "score": 0.0318
+        },
+        {
+          "number": 3,
+          "source_file": "apple.pdf",
+          "page_number": 5,
+          "score": 0.0318
+        },
+        {
+          "number": 4,
+          "source_file": "apple.pdf",
+          "page_number": 6,
+          "score": 0.0317
+        },
+        {
+          "number": 5,
+          "source_file": "apple.pdf",
+          "page_number": 8,
+          "score": 0.0301
+        }
+      ],
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "faithfulness_score": 5,
+      "faithfulness_reasoning": "The answer accurately reflects Apple's approach to product transitions and competition, incorporating key facts about managing product introductions and the competitive landscape."
+    }
+  ]
+}
