@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./vectorstore:/app/vectorstore   # use the already-built index, don't rebuild in-container
+      - ./data:/app/data
+    env_file:
+      - .env
+
+  app:
+    build: .
+    command: streamlit run app/streamlit_chat.py --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000   # service name, not localhost -- Docker's internal networking
+    depends_on:
+      - api
+    env_file:
+      - .env
